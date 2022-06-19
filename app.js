@@ -21,4 +21,4 @@ server.use((error, req, res, next) => {
 	res.json({ message: error.message || 'unknown error' });
 });
 
-server.listen(5000);
+server.listen(process.env.PORT || 5000);
