@@ -4,6 +4,9 @@ const server = express();
 const exchangeRate = require('./routes/exchangeRate');
 const httpError = require('./models/httpError');
 
+var cors = require('cors');
+app.use(cors());
+
 server.use(bodyParser.json());
 
 server.use('/api/exchangerate', exchangeRate);
