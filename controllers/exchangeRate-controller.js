@@ -5,7 +5,7 @@ const request = require('request');
 const getExchangeData = (req, res, next) => {
 	const from = req.params.base;
 	const to = req.params.to;
-	const requestURL = `https://api.exchangerate.host/latest?base=${from}&symbols=${to}&places=3`;
+	const requestURL = `${process.env.EXCHANGE_API}latest?base=${from}&symbols=${to}&places=3`;
 	console.log(from);
 	request(requestURL).pipe(res);
 };

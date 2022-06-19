@@ -1,0 +1,5 @@
+{
+	"env": {
+		"EXCHANGE_API": "https://api.exchangerate.host/"
+	}
+}
