@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const server = express();
 const exchangeRate = require('./routes/exchangeRate');
+const emailHandler = require('./routes/emailHandler');
 const httpError = require('./models/httpError');
 
 // var cors = require('cors');
@@ -17,6 +18,8 @@ server.use((req, res, next) => {
 });
 
 server.use('/api/exchangerate', exchangeRate);
+
+server.use('/api/emailhandler', emailHandler);
 
 server.use((req, res, next) => {
 	const error = new httpError('could not find route', 404);
