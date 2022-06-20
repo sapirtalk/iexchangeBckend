@@ -1,7 +1,0 @@
-{
-	"env": {
-		"EXCHANGE_API": "https://api.exchangerate.host/",
-		"SENDGRID_API_KEY": "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",
-		"SECRET_EMAIL": "iexchange55@gmail.com"
-	}
-}
