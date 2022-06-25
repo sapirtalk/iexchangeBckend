@@ -1,12 +1,26 @@
 const client = require('@sendgrid/mail');
+const undici = require('undici');
+
 client.setApiKey(process.env.SENDGRID_API_KEY);
 
-const sendEmail = (req, res, next) => {
+const sendEmail = async (req, res, next) => {
 	const params = {
 		firstName: req.body.firstName,
 		transCode: req.body.transCode,
-		email: req.body.email
+		email: req.body.email,
+		recapchaToken: req.body.token
 	};
+
+	const recaptcha = await undici.request(
+		`https://www.google.com/recaptcha/api/siteverify?secret=${process.env
+			.RECAPCHA_SECRET_KEY}&response=${params.recapchaToken}`,
+		{
+			method: 'POST'
+		}
+	);
+
+	if (recaptcha.body.success === false) return res.status(403).json({ message: 'Recapcha failed' });
+
 	client
 		.send({
 			to: {
