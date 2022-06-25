@@ -19,9 +19,10 @@ const sendEmail = async (req, res, next) => {
 		}
 	);
 
-	console.log(recaptcha.body);
+	const recaptchaRes = await recaptcha.body.json();
+	console.log(recaptchaRes);
 
-	if (recaptcha.body.success === false) return res.status(403).json({ message: 'Recapcha failed' });
+	if (recaptchaRes.success === false) return res.status(403).json({ message: 'Recapcha failed' });
 
 	client
 		.send({
