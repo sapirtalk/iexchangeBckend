@@ -8,7 +8,7 @@ const sendEmail = async (req, res, next) => {
 		firstName: req.body.firstName,
 		transCode: req.body.transCode,
 		email: req.body.email,
-		recapchaToken: req.body.token
+		recapchaToken: req.body.recapchaToken
 	};
 
 	const recaptcha = await undici.request(
