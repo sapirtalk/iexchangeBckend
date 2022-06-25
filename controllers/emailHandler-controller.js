@@ -42,6 +42,7 @@ const sendEmail = async (req, res, next) => {
 		})
 		.then(() => {
 			console.log('email sent');
+			res.json({ message: 'SUCCESS' });
 		});
 };
 
